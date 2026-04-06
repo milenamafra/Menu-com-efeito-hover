@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Syncopate', sans-serif;
+}
+
+body {
+    background-color: #010810; /* Fundo tech escuro */
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    overflow: hidden;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start; /* Alinhamento em parágrafo (esquerda) */
+    border-left: 2px solid rgba(0, 212, 255, 0.1); /* Linha guia lateral */
+    padding-left: 30px;
+}
+
+.nav-list li {
+    position: relative;
+}
+
+.nav-list a {
+    position: relative;
+    text-decoration: none;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    display: inline-block;
+    
+    /* Configuração Inicial: Letra Contornada Branca */
+    color: transparent;
+    -webkit-text-stroke: 1px #ffffff;
+    
+    /* Preenchimento Azul (começa invisível à esquerda) */
+    background: linear-gradient(to right, #00d4ff 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    -webkit-background-clip: text;
+    
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Hover: A palavra muda de cor da esquerda para direita e FICA */
+.nav-list a:hover {
+    background-position: 0%;
+    -webkit-text-stroke: 1px #00d4ff;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.8));
+}
+
+/* A BARRA FIXA que aparece ANTES e viaja até o final */
+.nav-list a::before {
+    content: '';
+    position: absolute;
+    left: -20px; /* Posição fixa antes da palavra */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 80%;
+    background: #00d4ff;
+    box-shadow: 0 0 15px #00d4ff, 0 0 30px #00d4ff;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* No Hover, a barra viaja até o final da palavra e permanece lá */
+.nav-list a:hover::before {
+    left: 100%;
+    height: 100%;
+}
+
+/* Detalhe futurista de fundo (opcional) */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent 95%, rgba(0, 212, 255, 0.05) 95%),
+                linear-gradient(90deg, transparent 95%, rgba(0, 212, 255, 0.05) 95%);
+    background-size: 50px 50px;
+    z-index: -1;
+}
